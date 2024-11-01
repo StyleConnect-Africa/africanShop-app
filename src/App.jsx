@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { BrowserRouter } from "react-router-dom";
 import Hero from "./components/Hero";
+import FeaturedProducts from "./components/FeaturedProducts";
+import ProductListing from "./components/ProductListing";
 
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
     <div>
       <Navbar />
       <Hero />
+      <FeaturedProducts />
+      <ProductListing />
       <Footer />
     </div>
    </BrowserRouter>
