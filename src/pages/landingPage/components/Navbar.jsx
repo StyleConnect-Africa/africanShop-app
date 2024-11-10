@@ -37,7 +37,7 @@ const Navbar = () => {
           Invest
         </Link>
         <Link
-          to={"/contact"}
+          to={"/contactpage"}
           className="border-b-2 border-b-transparent hover:border-b-2 hover:border-[#B28400]"
         >
           Contact
