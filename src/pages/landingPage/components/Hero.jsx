@@ -1,5 +1,6 @@
 import React from "react";
 import HeroPic from "../../../assets/img/HeroPic.png";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -23,12 +24,12 @@ const Hero = () => {
             suspendisse est egestas.
           </p>
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start font-serif">
-            <button className="bg-primary text-white  w-full sm:w-auto px-4 py-2 rounded-full text-center shadow hover:bg-accent2 hover:text-light">
+            <Link to="/shoppage" className="bg-primary text-white  w-full sm:w-auto px-4 py-2 rounded-full text-center shadow hover:bg-accent2 hover:text-light">
               Shop Now
-            </button>
-            <button className="border border-primary text-primary w-full sm:w-auto px-4 py-2 rounded-full shadow hover:bg-accent2 hover:border-none hover:text-white">
+            </Link>
+            <Link to="/signup" className="border border-primary text-primary w-full sm:w-auto px-4 py-2 rounded-full shadow hover:bg-accent2 hover:border-none hover:text-white">
               Join Us
-            </button>
+            </Link>
           </div>
         </div>
       </div>
