@@ -13,8 +13,7 @@ const LiveChat = () => {
         </div>
         <h2 className="text-xl font-semibold mb-3">Chat with us live</h2>
         <p className="text-gray-600 mb-6">
-          Lorem ipsum dolor sit amet consectetur. Venenatis vitae sapien
-          suspendisse est egestas.
+          Our live chat is available to assist you with any questions or concerns. Connect with us instantly.
         </p>
         <button className="border border-primary text-primary py-2 px-6 mt-20 rounded-full hover:bg-primary hover:text-white transition">
           Let's Chat
@@ -30,7 +29,7 @@ const LiveChat = () => {
       <img
         src={Print}
         alt="Background Pattern"
-        className="absolute  -bottom-4 -right-24  lg:bottom-10 lg:left-10 size-52 opacity-30"
+        className="absolute bottom-2 right-4 lg:bottom-10 lg:left-10 size-24 lg:size-52 opacity-5"
       />
     </div>
   );

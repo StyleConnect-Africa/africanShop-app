@@ -13,7 +13,7 @@ const HeroPage = () => {
           <p>Information</p>
         </div>
         <p className='mt-4 text-sm sm:text-base'>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br className='hidden sm:block' /> Debitis, dolore velit! Omnis.
+          Reach out to us for any inquiries or support. Our team is here to assist you with all your needs.
         </p>
       </div>
     </div>
