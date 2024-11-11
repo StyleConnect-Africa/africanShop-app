@@ -20,11 +20,9 @@ const SignUp1 = () => {
             <p className="text-[#B28400]">AFRICA</p>
           </div>
           <img src={VendorsignUpPic} alt="" />
-          <div className="h-4 w-4 rounded-full bg-green-500 absolute left-[2px] bottom-2 opacity-30"></div>
-          <div className="h-4 w-4 rounded-full bg-yellow-200 absolute left-[3px] bottom-[5px] opacity-30"></div>
-          <div className="h-4 w-4 rounded-full bg-[#B28400] absolute bottom-1 left-[1px] opacity-30"></div>
+          
         </div>
-        <div className="p-12 bg-[#FBFAF2] rounded-lg -ml-8">
+        <div className="p-5 bg-[#FBFAF2] rounded-lg -ml-8">
           <div>
             <div className="flex flex-col gap-y-5">
               <p className="text-[#B28400] text-3xl font-bold text-center">
@@ -42,7 +40,7 @@ const SignUp1 = () => {
               <p className="text-[#B28400]">Contact Information</p>
               </div>
             </div>
-            <form className=" flex flex-col gap-y-10 mt-4 text-center">
+            <form className=" flex flex-col gap-y-5 mt-2 text-center">
               <div className="">
                 <input
                   type="text"
@@ -58,6 +56,27 @@ const SignUp1 = () => {
                   placeholder="Your Email"
                   className="border rounded-lg h-14 w-[400px] p-4"
                 />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  name="number"
+                  placeholder="Phone"
+                  className="border rounded-lg h-14 w-[400px] p-4"
+                />
+              </div>
+              <div>
+                <select
+                  name="role"
+                  className="border rounded-lg h-14 w-[400px] p-4"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                   Role
+                  </option>
+                  <option value="vendor">Vendor</option>
+                  <option value="user">User</option>
+                </select>
               </div>
 
               <div className="relative">
@@ -78,14 +97,7 @@ const SignUp1 = () => {
                   />
                 </button>
               </div>
-              <div>
-                <input
-                  type="number"
-                  name="number"
-                  placeholder="Phone"
-                  className="border rounded-lg h-14 w-[400px] p-4"
-                />
-              </div>
+              
             </form>
             <div className="flex mt-4">
               <div className="flex gap-2">
@@ -100,10 +112,10 @@ const SignUp1 = () => {
               </div>
             </div>
             <div className="flex gap-28 mt-5 ">
-              <Link className="h-7 w-20 border border-[#DAA520] text-[#DAA520] text-center rounded-lg">
+              <Link to="/vendorlogin" className="h-7 w-20 border border-[#DAA520] text-[#DAA520] text-center rounded-lg hover:bg-accent2 hover:text-white hover:border-accent2">
                 Log in
               </Link>
-              <Link to="/signup2" className=" h-7 w-20 bg-[#DAA520] text-white text-center rounded-lg flex justify-center">
+              <Link to="/signup2" className=" h-7 w-20 bg-[#DAA520] text-white text-center rounded-lg flex justify-center hover:bg-accent2 hover:text-white">
                 Next
                 <IoChevronForwardOutline className="self-center size-4"  />
               </Link>

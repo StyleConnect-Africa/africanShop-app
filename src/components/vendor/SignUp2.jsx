@@ -20,9 +20,7 @@ const SignUp2 = () => {
             <p className="text-[#B28400]">AFRICA</p>
           </div>
           <img src={VendorsignUpPic} alt="" className="size-" />
-          <div className="h-4 w-4 rounded-full bg-green-500 absolute left-[2px] bottom-2 opacity-30"></div>
-          <div className="h-4 w-4 rounded-full bg-yellow-200 absolute left-[3px] bottom-[5px] opacity-30"></div>
-          <div className="h-4 w-4 rounded-full bg-[#B28400] absolute bottom-1 left-[1px] opacity-30"></div>
+         
         </div>
         <div className="p-12 bg-[#B28400] rounded-lg -ml-8">
           <div>
@@ -31,10 +29,10 @@ const SignUp2 = () => {
                 Sign Up
               </p>
               <div className="flex gap-28">
-                <Link to="/usersignup" className="text-slate-500 font-bold">
+                <Link to="/usersignup" className="font-bold">
                   User
                 </Link>
-                <Link to="/vendorsignup" className="text-[#B28400] font-bold">
+                <Link to="/vendorsignup" className="text-[#FBF5DF] font-bold">
                   Vendor
                 </Link>
               </div>
@@ -44,7 +42,7 @@ const SignUp2 = () => {
                 <input
                   type="text"
                   name="text"
-                  placeholder="Your Name"
+                  placeholder="Business Name"
                   className="border rounded-lg h-14 w-[400px] p-4"
                 />
               </div>
@@ -52,34 +50,17 @@ const SignUp2 = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Your Email"
+                  placeholder="Business Email"
                   className="border rounded-lg h-14 w-[400px] p-4"
                 />
               </div>
 
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  placeholder=" Create Password"
-                  className="border rounded-lg h-14 w-[400px] pr-12 p-4"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
-                >
-                  <IonIcon
-                    icon={showPassword ? eyeOffOutline : eyeOutline}
-                    size="medium"
-                  />
-                </button>
-              </div>
+              
               <div>
                 <input
                   type="number"
                   name="number"
-                  placeholder="Phone"
+                  placeholder=" Business Phone"
                   className="border rounded-lg h-14 w-[400px] p-4"
                 />
               </div>
@@ -97,15 +78,13 @@ const SignUp2 = () => {
               </div>
             </div>
             <div className="flex gap-28 mt-5 ">
-              <Link className="h-7 w-20 border border-[#DAA520] text-[#DAA520] text-center rounded-lg">
-                Log in
+              <Link to="/signup1" className="h-7 w-20 border border-[#FBF5DF] text-white text-center rounded-lg hover:bg-accent2 hover:text-white">
+                Back
               </Link>
               <Link
-                to="/signup2"
-                className=" h-7 w-20 bg-[#DAA520] text-white text-center rounded-lg flex justify-center"
+                className=" h-7 w-20 bg-[#DAA520] text-white text-center rounded-lg flex justify-center hover:bg-accent2 hover:text-white"
               >
-                Next
-                <IoChevronForwardOutline className="self-center size-4" />
+                Sign Up
               </Link>
             </div>
           </div>

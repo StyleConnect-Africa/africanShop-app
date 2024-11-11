@@ -1,6 +1,6 @@
 import React from "react";
 import VendorHero1 from "../../../assets/img/VendorHero1.jpg";
-import VendorHero2 from "../../../assets/img/VendorHero2.png";
+import VendorHero2 from "../../../assets/img/VendorHero2.jpg";
 import VendorHero3 from "../../../assets/img/VendorHero3.jpg";
 const HeroPage = () => {
   return (
