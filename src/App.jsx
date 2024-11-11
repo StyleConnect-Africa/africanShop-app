@@ -9,6 +9,8 @@ import VendorSignUp1 from "./components/vendor/SignUp1";
 import SignUp2 from "./components/vendor/SignUp2";
 import SignUp from "./components/user/SignUp";
 import SignUp1 from "./components/vendor/SignUp1";
+import Login from "./components/user/Login"
+import VendorLogin from "./components/vendor/VendorLogin"
 
 function App() {
   const router = createBrowserRouter([
@@ -39,6 +41,14 @@ function App() {
     {
       path:"/signup2",
       element: <SignUp2 />
+    },
+    {
+      path:"/login",
+      element:<Login />
+    },
+    {
+      path:"/vendorlogin",
+      element:<VendorLogin />
     },
   ]);
 
