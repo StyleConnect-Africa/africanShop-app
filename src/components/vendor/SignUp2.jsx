@@ -3,7 +3,7 @@ import { useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { eyeOutline, eyeOffOutline } from "ionicons/icons";
 import { Link } from "react-router-dom";
-import VendorSignUpPic from "../../assets/img/VendorSignUpPic.png"
+import VendorsignUpPic from "../../assets/img/VendorsignUpPic.png";
 
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { IoChevronForwardOutline } from "react-icons/io5";
@@ -20,7 +20,7 @@ const SignUp2 = () => {
             </p>
             <p className="text-[#B28400]">AFRICA</p>
           </div>
-          <img src={VendorSignUpPic} alt="" className="size-" />
+          <img src={VendorsignUpPic} alt="" className="size-" />
          
         </div>
         <div className="p-12 bg-[#B28400] rounded-lg -ml-8">

@@ -62,7 +62,7 @@ const SignUp = () => {
                   defaultValue=""
                 >
                   <option value="" disabled>
-                   Role
+                    Role
                   </option>
                   <option value="vendor">Vendor</option>
                   <option value="user">User</option>
@@ -104,7 +104,10 @@ const SignUp = () => {
               <Link className="h-7 w-20 bg-[#F7DC6F] text-center rounded-lg hover:bg-accent2 hover:text-white">
                 Sign Up
               </Link>
-              <Link to="/login" className="h-7 w-20 border border-[#F7DC6F] text-white  text-center rounded-lg  hover:bg-accent2 hover:text-white hover:border-accent2">
+              <Link
+                to="/login"
+                className="h-7 w-20 border border-[#F7DC6F] text-white  text-center rounded-lg  hover:bg-accent2 hover:text-white hover:border-accent2"
+              >
                 Log in
               </Link>
             </div>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { eyeOutline, eyeOffOutline } from "ionicons/icons";
 import { Link } from "react-router-dom";
-import UserloginPic from "../../assets/img/UserloginPic.jpg"
+import UserLoginPic from "../../assets/img/UserloginPic.jpg"
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -73,7 +73,7 @@ const SignUp = () => {
             </p>
             <p className="text-[#B28400] font-serif text-xl">AFRICA</p>
           </div>
-          <img src={UserloginPic} alt="" className="size-[450px]" />
+          <img src={UserLoginPic} alt="" className="size-[450px]" />
         </div>
         
       </div>

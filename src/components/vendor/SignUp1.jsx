@@ -3,7 +3,7 @@ import { useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { eyeOutline, eyeOffOutline } from "ionicons/icons";
 import { Link } from "react-router-dom";
-import VendorsignUpPic from "../../assets/img/VendorsignUpPic.png";
+import VendorSignUpPic from "../../assets/img/VendorSignUpPic.png";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { IoChevronForwardOutline } from "react-icons/io5";
 
@@ -19,8 +19,7 @@ const SignUp1 = () => {
             </p>
             <p className="text-[#B28400]">AFRICA</p>
           </div>
-          <img src={VendorsignUpPic} alt="" />
-          
+          <img src={VendorSignUpPic} alt="" />
         </div>
         <div className="p-5 bg-[#FBFAF2] rounded-lg -ml-8">
           <div>
@@ -37,7 +36,7 @@ const SignUp1 = () => {
                 </Link>
               </div>
               <div>
-              <p className="text-[#B28400]">Contact Information</p>
+                <p className="text-[#B28400]">Contact Information</p>
               </div>
             </div>
             <form className=" flex flex-col gap-y-5 mt-2 text-center">
@@ -72,7 +71,7 @@ const SignUp1 = () => {
                   defaultValue=""
                 >
                   <option value="" disabled>
-                   Role
+                    Role
                   </option>
                   <option value="vendor">Vendor</option>
                   <option value="user">User</option>
@@ -97,7 +96,6 @@ const SignUp1 = () => {
                   />
                 </button>
               </div>
-              
             </form>
             <div className="flex mt-4">
               <div className="flex gap-2">
@@ -112,12 +110,18 @@ const SignUp1 = () => {
               </div>
             </div>
             <div className="flex gap-28 mt-5 ">
-              <Link to="/vendorlogin" className="h-7 w-20 border border-[#DAA520] text-[#DAA520] text-center rounded-lg hover:bg-accent2 hover:text-white hover:border-accent2">
+              <Link
+                to="/vendorlogin"
+                className="h-7 w-20 border border-[#DAA520] text-[#DAA520] text-center rounded-lg hover:bg-accent2 hover:text-white hover:border-accent2"
+              >
                 Log in
               </Link>
-              <Link to="/signup2" className=" h-7 w-20 bg-[#DAA520] text-white text-center rounded-lg flex justify-center hover:bg-accent2 hover:text-white">
+              <Link
+                to="/signup2"
+                className=" h-7 w-20 bg-[#DAA520] text-white text-center rounded-lg flex justify-center hover:bg-accent2 hover:text-white"
+              >
                 Next
-                <IoChevronForwardOutline className="self-center size-4"  />
+                <IoChevronForwardOutline className="self-center size-4" />
               </Link>
             </div>
           </div>
