@@ -3,7 +3,7 @@ import { useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { eyeOutline, eyeOffOutline } from "ionicons/icons";
 import { Link } from "react-router-dom";
-import ShopHero1 from "../../assets/img/ShopHero1.png";
+import VendorSignUpPic from "../../assets/img/VendorSignUpPic.png"
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,17 +17,17 @@ const SignUp = () => {
             </p>
             <p className="text-[#B28400] font-serif text-xl">AFRICA</p>
           </div>
-          <img src={ShopHero1} alt="" className="" />
+          <img src={VendorSignUpPic} alt="" className="" />
         </div>
-        <div className="p-5 bg-[#B28400] rounded-lg -ml-8">
+        <div className="p-5 bg-[#FBFAF2] rounded-lg -ml-8">
           <div>
             <div className="flex flex-col gap-y-2">
-              <p className="text-white text-3xl font-bold text-center">
+              <p className="text-[#B28400] text-3xl font-bold text-center">
                 Create Account
               </p>
               <div className="flex gap-28">
-                <Link className="text-[#F7DC6F] font-bold">User</Link>
-                <Link to="/signup1">Vendor</Link>
+                <Link className="text-[#B28400] font-bold">User</Link>
+                <Link to="/signup1" className="text-slate-500">Vendor</Link>
               </div>
             </div>
             <form className=" flex flex-col gap-y-5 mt-2 text-center">
@@ -106,7 +106,7 @@ const SignUp = () => {
               </Link>
               <Link
                 to="/login"
-                className="h-7 w-20 border border-[#F7DC6F] text-white  text-center rounded-lg  hover:bg-accent2 hover:text-white hover:border-accent2"
+                className="h-7 w-20 border border-[#F7DC6F] text-[#F7DC6F]  text-center rounded-lg  hover:bg-accent2 hover:text-white hover:border-accent2"
               >
                 Log in
               </Link>
