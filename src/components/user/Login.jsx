@@ -3,16 +3,16 @@ import { useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { eyeOutline, eyeOffOutline } from "ionicons/icons";
 import { Link } from "react-router-dom";
-import UserLoginPic from "../../assets/img/UserloginPic.jpg"
+import VendorSignUpPic from "../../assets/img/VendorSignUpPic.png"
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <div className="h-screen flex flex-col justify-center items-center">
       <div className="flex">
-      <div className="p-10 bg-[#B28400] rounded-lg -ml-8">
+      <div className="p-10 bg-[#FBFAF2] rounded-lg -ml-8">
           <div>
             <div className="flex flex-col mb-6">
-              <p className="text-white text-3xl font-bold text-center">
+              <p className="text-[#B28400] text-3xl font-bold text-center">
                 Log In
               </p>
               
@@ -65,14 +65,14 @@ const SignUp = () => {
             </div>
           </div>
         </div>
-        <div className="bg-slate-50 rounded-lg">
+        <div className="bg-[#FBF5DF] rounded-lg">
           <div className="flex p-5 font-bold text-xl">
             <p className="text-[#B28400] font-serif">
               STYLE<span className="text-black">CONNECT</span>
             </p>
             <p className="text-[#B28400] font-serif text-xl">AFRICA</p>
           </div>
-          <img src={UserLoginPic} alt="" className="size-[450px]" />
+          <img src={VendorSignUpPic} alt="" className="size-[450px]" />
         </div>
         
       </div>

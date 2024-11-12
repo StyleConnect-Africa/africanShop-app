@@ -3,7 +3,7 @@ import { useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { eyeOutline, eyeOffOutline } from "ionicons/icons";
 import { Link } from "react-router-dom";
-import VendorsignUpPic from "../../assets/img/UserloginPic.jpg";
+import VendorsignUpPic from "../../assets/img/VendorSignUpPic.png";
 
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { IoChevronForwardOutline } from "react-icons/io5";
@@ -22,17 +22,17 @@ const SignUp2 = () => {
           <img src={VendorsignUpPic} alt="" className="size-" />
          
         </div>
-        <div className="p-12 bg-[#B28400] rounded-lg -ml-8">
+        <div className="p-12 bg-[#FBFAF2] rounded-lg -ml-8">
           <div>
             <div className="flex flex-col gap-y-5">
               <p className="text-[#B28400] text-3xl font-bold text-center">
                 Sign Up
               </p>
               <div className="flex gap-28">
-                <Link to="/usersignup" className="font-bold">
+                <Link to="/usersignup" className="font-bold text-slate-500">
                   User
                 </Link>
-                <Link to="/vendorsignup" className="text-[#FBF5DF] font-bold">
+                <Link to="/vendorsignup" className="text-[#B28400] font-bold">
                   Vendor
                 </Link>
               </div>
@@ -78,11 +78,11 @@ const SignUp2 = () => {
               </div>
             </div>
             <div className="flex gap-28 mt-5 ">
-              <Link to="/signup1" className="h-7 w-20 border border-[#FBF5DF] text-white text-center rounded-lg hover:bg-accent2 hover:text-white">
+              <Link to="/signup1" className="h-7 w-20 border border-[#F7DC6F] text-[#F7DC6F] text-center rounded-lg hover:bg-accent2 hover:text-white hover:border-accent2">
                 Back
               </Link>
               <Link
-                className=" h-7 w-20 bg-[#DAA520] text-white text-center rounded-lg flex justify-center hover:bg-accent2 hover:text-white"
+                className=" h-7 w-20  bg-[#DAA520] text-[#F7DC6F] text-center rounded-lg flex justify-center hover:bg-accent2 hover:text-white"
               >
                 Sign Up
               </Link>

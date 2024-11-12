@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { CiSearch } from "react-icons/ci";
 import { FaBars, FaTimes } from "react-icons/fa";
 import NavPic from "../../../assets/img/NavPic.jpg";
 
@@ -56,14 +55,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex flex-col lg:flex-row lg:items-center ml-4 gap-6 mt-4 lg:mt-0">
-          <div className="flex rounded shadow px-2 h-7">
-            <CiSearch className="self-center" />
-            <input
-              type="search"
-              placeholder="search"
-              className="outline-none border-none"
-            />
-          </div>
+          
           <div>
             <img
               className="h-12 rounded-full w-12"
