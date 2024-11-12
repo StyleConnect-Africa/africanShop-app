@@ -7,7 +7,6 @@ import VendorsignUpPic from "../../assets/img/VendorsignUpPic.png";
 
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { IoChevronForwardOutline } from "react-icons/io5";
-
 const SignUp2 = () => {
   const [showPassword, setShowPassword] = useState(false);
   return (
