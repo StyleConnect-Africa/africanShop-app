@@ -3,7 +3,7 @@ import { useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { eyeOutline, eyeOffOutline } from "ionicons/icons";
 import { Link } from "react-router-dom";
-import VendorsignUpPic from "../../assets/img/VendorsignUpPic.png";
+import VendorsignUpPic from "../../assets/img/UserloginPic.jpg";
 
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { IoChevronForwardOutline } from "react-icons/io5";
