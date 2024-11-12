@@ -4,7 +4,6 @@ import { IonIcon } from "@ionic/react";
 import { eyeOutline, eyeOffOutline } from "ionicons/icons";
 import { Link } from "react-router-dom";
 import UserLoginPic from "../../assets/img/UserloginPic.jpg"
-
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   return (
