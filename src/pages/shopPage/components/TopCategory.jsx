@@ -1,45 +1,30 @@
 import React from "react";
 import FeaturedPic1 from "../../../assets/img/FeaturedPic1.png";
-const TopCategory = () => {
+
+const TopCategory = ({ loading }) => {
   return (
-    <div className="px-20 h-full">
-      <div className="h-36">
-        <p className="text-2xl font-semibold">Top Categories</p>
+    <div className="px-4 md:px-20 py-8">
+      <div className="mb-8">
+        <p className="text-2xl font-semibold text-center">Top Categories</p>
       </div>
-      <div className="flex gap-5">
-        <div className="bg-[#F4F4F2] w-1/3 h-60  rounded-xl shadow">
-          <p className="flex justify-center items-center pt-4 text-xl">Traditional Clothing</p>
-          <div className="flex">
-            <div className="pt-32 pl-10">
-            <button className="border-[#FF9900] text-[#FF9900] border h-10 w-20 rounded-xl ">
-              Explore
-            </button>
+      <div className="flex flex-wrap gap-5 justify-center">
+        {["Traditional Clothing", "Modern Fashion", "Accessories"].map((category, index) => (
+          <div key={index} className={`bg-[#F4F4F2] w-full sm:w-1/2 md:w-1/3 h-80 rounded-xl shadow-lg overflow-hidden relative ${loading ? 'animate-pulse' : ''}`}>
+            <p className="text-xl font-medium text-center pt-4">{loading ? <span className="bg-gray-300 h-6 w-32 block mx-auto rounded"></span> : category}</p>
+            <div className="flex justify-center items-center h-full">
+              {loading ? (
+                <div className="w-40 h-40 bg-gray-300 rounded-full"></div>
+              ) : (
+                <img src={FeaturedPic1} alt={category} className="w-40 h-40 object-cover rounded-full shadow-md" />
+              )}
+              {!loading && (
+                <button className="absolute bottom-4 left-4 bg-[#FF9900] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#e68a00] transition">
+                  Explore
+                </button>
+              )}
             </div>
-            <img src={FeaturedPic1} alt="" className="size-48 py-2 ml-20" />
           </div>
-        </div>
-        <div className="bg-[#F4F4F2] w-1/3 h-72 -mt-12 rounded-xl shadow">
-          <p className="flex justify-center items-center pt-4 text-xl">Traditional Clothing</p>
-          <div className="flex">
-            <div className="pt-44 pl-10">
-            <button className="border-[#FF9900] text-[#FF9900] border h-10 w-20 rounded-xl ">
-              Explore
-            </button>
-            </div>
-            <img src={FeaturedPic1} alt="" className="size-60 py-2 ml-20" />
-          </div>
-        </div>
-        <div className="bg-[#F4F4F2] w-1/3 h-[340px] -mt-24  rounded-xl shadow">
-          <p className="flex justify-center items-center pt-4 text-xl">Traditional Clothing</p>
-          <div className="flex">
-            <div className="pt-56 pl-10">
-            <button className="border-[#FF9900] text-[#FF9900] border h-10 w-20 rounded-xl ">
-              Explore
-            </button>
-            </div>
-            <img src={FeaturedPic1} alt="" className="size-72 py-2 ml-12" />
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

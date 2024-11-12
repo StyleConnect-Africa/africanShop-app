@@ -1,20 +1,26 @@
-import React from 'react'
+import React from 'react';
 
 const ContactVendor = () => {
   return (
-    <div  className='w-[1300px] h-[150px] mx-5 p-20 mb-40'>
-        <div className=' flex flex-col items-center justify-center p-4 border shadow-2xl'>
-        <p className='text-2xl font-bold'>Contact a Vendor</p>
-        <p className='mt-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, vitae.</p>
-       <div className='flex mt-4 border rounded-2xl w-80 h-10 justify-between bg-[#F5F5F5]'>
-       <input 
-         type="email"
-         placeholder='Email Address ' className='ml-8 bg-[#F5F5F5]'/>
-         <button className='bg-[#FF9900] w-16 rounded-2xl'>Submit</button>
-       </div>
+    <div className="max-w-4xl mx-auto p-6 mb-40">
+      <div className="flex flex-col items-center justify-center p-6 border shadow-2xl rounded-lg bg-white">
+        <p className="text-2xl font-bold">Contact a Vendor</p>
+        <p className="mt-4 text-center text-gray-600">
+          Reach out to our vendors for any inquiries or collaborations. We are here to assist you.
+        </p>
+        <div className="flex mt-4 w-full max-w-md">
+          <input
+            type="email"
+            placeholder="Email Address"
+            className="flex-grow p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-[#FF9900]"
+          />
+          <button className="bg-[#FF9900] text-white px-4 py-2 rounded-r-lg hover:bg-[#e68a00] transition">
+            Submit
+          </button>
+        </div>
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default ContactVendor
+export default ContactVendor;
