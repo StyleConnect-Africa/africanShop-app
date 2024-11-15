@@ -58,8 +58,8 @@ const ProductListing = () => {
                 </div>
                 <div className="p-4">
                   <div className="flex justify-between items-center mb-2">
-                    <MdFavoriteBorder className="text-2xl text-[#FF9900]" />
-                    <FaCartPlus className="text-2xl text-[#FF9900]" />
+                    <MdFavoriteBorder className="text-2xl text-primary" />
+                    <FaCartPlus className="text-2xl text-primary" />
                   </div>
                   <div className="flex justify-between items-center mb-2">
                     <p className="font-normal text-xl">Ama Quophie</p>

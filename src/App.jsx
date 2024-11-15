@@ -6,9 +6,11 @@ import VendorPage from "./pages/vendorPage/VendorPage";
 import ContactPage from "./pages/contactPage/ContactPage";
 import UserSignUp from "./components/user/SignUp";
 import VendorSignUp1 from "./components/vendor/SignUp1";
+import ProtectedRoute from "./components/ProtectedRoute";
 import SignUp2 from "./components/vendor/SignUp2";
 import SignUp from "./components/user/SignUp";
 import SignUp1 from "./components/vendor/SignUp1";
+import Dashboard from "./pages/dashboard";
 import Login from "./components/user/Login"
 import VendorLogin from "./components/vendor/VendorLogin"
 import Cart from "./pages/cart/Cart";
@@ -65,6 +67,10 @@ function App() {
       path:"/vendorsignup",
       element:<VendorSignUp />
     },
+    {
+      path:"/dashboard",
+      element:<ProtectedRoute isAuthenticated={true}><Dashboard /></ProtectedRoute>
+    }
   ]);
 
   return <RouterProvider router={router} />;

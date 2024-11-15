@@ -22,7 +22,7 @@ const HeroPage = () => {
             <p className="text-gray-600 leading-relaxed w-full sm:w-[500px]">
               Discover the vibrant and diverse world of African fashion. Explore our curated collections that celebrate the rich heritage and creativity of Africa.
             </p>
-            <button className="border bg-[#FF9900] text-white w-32 h-10 rounded-lg transition-transform transform hover:scale-105">
+            <button className="border bg-primary text-white w-32 h-10 rounded-lg transition-transform transform hover:scale-105">
               Shop Now
             </button>
           </div>

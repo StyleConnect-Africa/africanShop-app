@@ -10,7 +10,7 @@ import { IoChevronForwardOutline } from "react-icons/io5";
 const SignUp1 = () => {
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
+    <div className="h-screen flex flex-col justify-center items-center"> 
       <div className="flex">
         <div className="bg-[#FBF5DF] rounded-lg">
           <div className="flex p-5 font-bold text-2xl">
