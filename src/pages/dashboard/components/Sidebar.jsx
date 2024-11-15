@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BarChart2, ShoppingCart, Package, PlusCircle, Menu, X, Trash2, Edit } from "lucide-react";
-import AddItemForm from "./AddItemForm";
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -90,14 +89,6 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           </Button>
         </nav>
       </aside>
-
-      {/* Main content */}
-      <main className="flex-1 p-4 md:p-8 overflow-y-auto">
-        {activeTab === "addProduct" && (
-          <AddItemForm handleAddItem={() => { /* handle add item logic */ }} />
-        )}
-        {/* Other main content based on activeTab */}
-      </main>
     </div>
   );
 };

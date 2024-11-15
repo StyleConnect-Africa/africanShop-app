@@ -76,7 +76,7 @@ const UpdateItemForm = ({ handleUpdateItem, categories = [], subcategories = [],
           <Input id="stock" name="stock" type="number" min="0" defaultValue={itemData.stock} required className="mt-1 block w-full" />
         </div>
         <div className="col-span-1 md:col-span-2">
-          <Button type="submit" className="w-full bg-primary-color text-white py-2 mt-4">
+          <Button type="submit" className="w-full bg-secondary text-white py-2 mt-4">
             Update Item
           </Button>
         </div>
