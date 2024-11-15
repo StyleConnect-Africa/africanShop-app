@@ -53,9 +53,7 @@ const SignUp2 = () => {
                   placeholder="Business Email"
                   className="border rounded-lg h-14 w-[400px] p-4"
                 />
-              </div>
-
-              
+              </div> 
               <div>
                 <input
                   type="number"
