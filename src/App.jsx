@@ -13,9 +13,7 @@ import SignUp1 from "./components/vendor/SignUp1";
 import Dashboard from "./pages/dashboard";
 import Login from "./components/user/Login"
 import VendorLogin from "./components/vendor/VendorLogin"
-import Cart from "./pages/cart/Cart";
-import WishList from "./pages/wishList/WishList";
-
+import Cart from "./pages/cart";
 function App() {
   const router = createBrowserRouter([
     {
@@ -57,10 +55,6 @@ function App() {
     {
       path:"/cart",
       element:<Cart />
-    },
-    {
-      path:"/wishlist",
-      element:<WishList />
     },
     {
       path:"/dashboard",

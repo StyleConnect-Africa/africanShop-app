@@ -16,10 +16,7 @@ const Navbar2 = () => {
         </div>
       </div>
       <div className='flex gap-4 sm:gap-10'>
-        <Link to="/wishlist" className='flex items-center justify-center h-10 w-10 sm:w-28 border bg-white rounded-lg shadow transition-transform transform hover:scale-105'>
-          <AiOutlineHeart className='text-gray-500 sm:mr-2' />
-          <span className='hidden sm:inline'>Wish List</span>
-        </Link>
+    
         <Link to="/cart" className='flex items-center justify-center h-10 w-10 sm:w-28 border bg-white rounded-lg shadow transition-transform transform hover:scale-105'>
           <AiOutlineShoppingCart className='text-gray-500 sm:mr-2' />
           <span className='hidden sm:inline'>My Cart</span>
