@@ -1,15 +1,19 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { eyeOutline, eyeOffOutline } from "ionicons/icons";
 import { useNavigate, useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import VendorSignUpPic from "../../assets/img/VendorSignUpPic.png";
 import CircularProgress from "./CircularProgress";
+import LoadingModal from "../ModalLoading/";
 
 const SignUp2 = () => {
   const showPasswordRef = useRef(false);
   const navigate = useNavigate();
   const location = useLocation();
   const formDataRef = useRef(location.state?.formData || {});
+  const [loading, setLoading] = useState(false);
 
   const togglePasswordVisibility = () => {
     showPasswordRef.current = !showPasswordRef.current;
@@ -30,11 +34,21 @@ const SignUp2 = () => {
     formDataRef.current.phoneNo = document.getElementById("phoneNo").value;
     formDataRef.current.country = document.getElementById("country").value;
     console.log("Form Data:", formDataRef.current);
-    // Submit form data to the backend
+
+    // Simulate a network request
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      toast.success("Vendor registration successful!");
+      // Optionally navigate to another page after registration
+      // navigate("/some-other-page");
+    }, 2000);
   };
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center px-4 bg-gray-100">
+      <ToastContainer />
+      <LoadingModal isLoading={loading} />
       <div className="flex flex-col md:flex-row bg-white bg-opacity-90 rounded-lg shadow-lg overflow-hidden w-full max-w-2xl">
         <div className="flex flex-col items-center p-5 bg-[#FBF5DF]">
           <div className="font-bold text-2xl mb-4">
