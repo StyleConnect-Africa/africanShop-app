@@ -4,8 +4,6 @@ import LandingPage from "./pages/landingPage/LandingPage";
 import ShopPage from "./pages/shopPage/ShopPage";
 import VendorPage from "./pages/vendorPage/VendorPage";
 import ContactPage from "./pages/contactPage/ContactPage";
-import UserSignUp from "./components/user/SignUp";
-import VendorSignUp1 from "./components/vendor/SignUp1";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SignUp2 from "./components/vendor/SignUp2";
 import SignUp from "./components/user/SignUp";

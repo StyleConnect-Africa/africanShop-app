@@ -5,12 +5,14 @@ import Vendor1 from './components/Vendor1'
 import Vendor2 from './components/Vendor2'
 import ContactVendor from './components/ContactVendor'
 import Footer from '../landingPage/components/Footer'
+import VendorSetupSteps from './components/VendorSetupSteps'
 
 const VendorPage = () => {
   return (
     <div>
         <Navbar />
         <HeroPage />
+        <VendorSetupSteps />
         <Vendor1 />
         <Vendor2 />
         <ContactVendor />

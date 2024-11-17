@@ -27,7 +27,7 @@ const Hero = () => {
             <Link to="/shoppage" className="bg-primary text-white  w-full sm:w-auto px-4 py-2 rounded-full text-center shadow hover:bg-accent2 hover:text-light">
               Shop Now
             </Link>
-            <Link to="/signup" className=" bg-accent1 text-white w-full sm:w-auto px-4 py-2 rounded-full shadow hover:bg-primary hover:border-none hover:text-white">
+            <Link to="/signup1" className=" bg-accent1 text-white w-full sm:w-auto px-4 py-2 rounded-full shadow hover:bg-primary hover:border-none hover:text-white">
               Become Vendor
             </Link>
           </div>
