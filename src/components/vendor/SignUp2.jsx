@@ -1,95 +1,140 @@
-import React from "react";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { eyeOutline, eyeOffOutline } from "ionicons/icons";
-import { Link } from "react-router-dom";
-import VendorsignUpPic from "../../assets/img/VendorSignUpPic.png";
+import { useNavigate, useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import VendorSignUpPic from "../../assets/img/VendorSignUpPic.png";
+import CircularProgress from "./CircularProgress";
+import LoadingModal from "../ModalLoading/";
 
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { IoChevronForwardOutline } from "react-icons/io5";
 const SignUp2 = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  const showPasswordRef = useRef(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const formDataRef = useRef(location.state?.formData || {});
+  const [loading, setLoading] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    showPasswordRef.current = !showPasswordRef.current;
+    document.getElementById("password").type = showPasswordRef.current
+      ? "text"
+      : "password";
+  };
+
+  const handleBack = () => {
+    navigate("/signup1");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    formDataRef.current.name = document.getElementById("name").value;
+    formDataRef.current.email = document.getElementById("email").value;
+    formDataRef.current.password = document.getElementById("password").value;
+    formDataRef.current.phoneNo = document.getElementById("phoneNo").value;
+    formDataRef.current.country = document.getElementById("country").value;
+    console.log("Form Data:", formDataRef.current);
+
+    // Simulate a network request
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      toast.success("Vendor registration successful!");
+      // Optionally navigate to another page after registration
+      // navigate("/some-other-page");
+    }, 2000);
+  };
+
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
-      <div className="flex">
-        <div className="bg-[#FBF5DF] rounded-lg">
-          <div className="flex p-5 font-bold text-2xl">
+    <div className="min-h-screen flex flex-col justify-center items-center px-4 bg-gray-100">
+      <ToastContainer />
+      <LoadingModal isLoading={loading} />
+      <div className="flex flex-col md:flex-row bg-white bg-opacity-90 rounded-lg shadow-lg overflow-hidden w-full max-w-2xl">
+        <div className="flex flex-col items-center p-5 bg-[#FBF5DF]">
+          <div className="font-bold text-2xl mb-4">
             <p className="text-[#B28400]">
               STYLE<span className="text-black">CONNECT</span>
             </p>
             <p className="text-[#B28400]">AFRICA</p>
           </div>
-          <img src={VendorsignUpPic} alt="" className="size-" />
-         
+          <img
+            src={VendorSignUpPic}
+            alt="Vendor Sign Up"
+            className="w-full max-w-xs"
+          />
         </div>
-        <div className="p-12 bg-[#FBFAF2] rounded-lg -ml-8">
-          <div>
-            <div className="flex flex-col gap-y-5">
-              <p className="text-[#B28400] text-3xl font-bold text-center">
-                Sign Up
-              </p>
-              <div className="flex gap-28">
-                <Link to="/usersignup" className="font-bold text-slate-500">
-                  User
-                </Link>
-                <Link to="/vendorsignup" className="text-[#B28400] font-bold">
-                  Vendor
-                </Link>
-              </div>
-            </div>
-            <form className=" flex flex-col gap-y-10 mt-4 text-center">
-              <div className="">
-                <input
-                  type="text"
-                  name="text"
-                  placeholder="Business Name"
-                  className="border rounded-lg h-14 w-[400px] p-4"
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Business Email"
-                  className="border rounded-lg h-14 w-[400px] p-4"
-                />
-              </div> 
-              <div>
-                <input
-                  type="number"
-                  name="number"
-                  placeholder=" Business Phone"
-                  className="border rounded-lg h-14 w-[400px] p-4"
-                />
-              </div>
-            </form>
-            <div className="flex mt-4">
-              <div className="flex gap-2">
-                <input
-                  type="checkbox"
-                  className="h-4 w-4 border-none outline-none border-[#F7DC6F] self-center"
-                />
-                <Link>
-                  Agree to <span className="text-blue-700">terms</span> &{" "}
-                  <span className="text-blue-700">conditions</span>
-                </Link>
-              </div>
-            </div>
-            <div className="flex gap-28 mt-5 ">
-              <Link to="/signup1" className="h-7 w-20 border border-[#F7DC6F] text-[#F7DC6F] text-center rounded-lg hover:bg-accent2 hover:text-white hover:border-accent2">
-                Back
-              </Link>
-              <Link
-                className=" h-7 w-20  bg-[#DAA520] text-[#F7DC6F] text-center rounded-lg flex justify-center hover:bg-accent2 hover:text-white"
-              >
-                Sign Up
-              </Link>
-            </div>
+        <div
+          className="p-8 bg-[#FBFAF2] rounded-lg flex-1 overflow-y-auto"
+          style={{ maxHeight: "90vh" }}
+        >
+          <div className="flex justify-between items-center mb-4">
+            <p className="text-[#B28400] text-xl font-medium font-sans">Vendor Sign Up</p>
+            <CircularProgress currentStep={2} totalSteps={2} />
           </div>
+          <form
+            className="flex flex-col gap-y-5 font-thin font-serif text-sm mt-4 text-center"
+            onSubmit={handleSubmit}
+          >
+            <input
+              id="name"
+              type="text"
+              placeholder="Your Name"
+              className="border rounded-lg h-14 w-full p-4"
+            />
+            <input
+              id="email"
+              type="email"
+              placeholder="Your Email"
+              className="border rounded-lg h-14 w-full p-4"
+            />
+            <input
+              id="phoneNo"
+              type="text"
+              placeholder="Phone No"
+              className="border rounded-lg h-14 w-full p-4"
+            />
+            <input
+              id="country"
+              type="text"
+              placeholder="Country"
+              className="border rounded-lg h-14 w-full p-4"
+            />
+            <div className="relative">
+              <input
+                id="password"
+                type="password"
+                placeholder="Create Password"
+                className="border rounded-lg h-14 w-full pr-12 p-4"
+              />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+              >
+                <IonIcon
+                  icon={showPasswordRef.current ? eyeOffOutline : eyeOutline}
+                  size="medium"
+                />
+              </button>
+            </div>
+            <div className="flex justify-between mt-4">
+              <button
+                type="button"
+                onClick={handleBack}
+                className="h-10 w-24 border border-[#DAA520] text-[#DAA520] text-center rounded-lg hover:bg-accent2 hover:text-white"
+              >
+                Back
+              </button>
+              <button
+                type="submit"
+                className="h-10 w-24 bg-[#DAA520] text-white text-center rounded-lg hover:bg-accent2"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-      {/* <img src={SignUpPrint} alt="" className="size-36 absolute right-[1px] bottom-[1px] opacity-50 rotate-12"/> */}
-      {/* <div className="bg-red-800 h4 w-4 rounded-full"></div> */}
     </div>
   );
 };
