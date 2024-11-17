@@ -1,13 +1,17 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { eyeOutline, eyeOffOutline } from "ionicons/icons";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import VendorSignUpPic from "../../assets/img/VendorSignUpPic.png";
+import LoadingModal from "../ModalLoading";
 
 const Login = () => {
   const passwordRef = useRef(null);
   const showPasswordRef = useRef(false);
   const emailRef = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   const togglePasswordVisibility = () => {
     showPasswordRef.current = !showPasswordRef.current;
@@ -18,16 +22,23 @@ const Login = () => {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
+    setLoading(true);
+
     // Simulate a login process
-    if (email === "test@example.com" && password === "password") {
-      alert("Login successful!");
-    } else {
-      alert("Invalid email or password.");
-    }
+    setTimeout(() => {
+      setLoading(false);
+      if (email === "test@example.com" && password === "password") {
+        toast.success("Login successful!");
+      } else {
+        toast.error("Invalid email or password.");
+      }
+    }, 2000);
   };
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center px-4 bg-gray-100">
+      <LoadingModal isLoading={loading} />
+      <ToastContainer />
       <div className="flex flex-col md:flex-row bg-white bg-opacity-90 rounded-lg shadow-lg overflow-hidden w-full max-w-2xl">
         <div className="flex flex-col items-center p-5 bg-[#F7DC6F]">
           <div className="font-bold text-2xl mb-4">
