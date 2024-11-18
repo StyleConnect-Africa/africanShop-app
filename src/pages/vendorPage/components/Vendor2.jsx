@@ -3,9 +3,12 @@ import Twitter from "../../../assets/img/Twitter.png";
 import Facebook from "../../../assets/img/Facebook.png";
 import Instagram from "../../../assets/img/Instagram.jpg";
 import Tiktok from "../../../assets/img/Tiktok.png";
-import AvailableProduct1 from "../../../assets/img/AvailableProduct1.jpg";
-import AvailableProduct2 from "../../../assets/img/AvailableProduct2.jpg";
-import AvailableProduct3 from "../../../assets/img/AvailableProduct3.jpg";
+import Vendor2Pic1 from "../../../assets/img/Vendor2Pic1.png"
+import Vendor2Pic2 from "../../../assets/img/Vendor2Pic2.png"
+import Vendor2Pic3 from "../../../assets/img/Vendor2Pic3.png"
+import Vendor2Pic4 from "../../../assets/img/Vendor2Pic4.png"
+import Vendor2Pic5 from "../../../assets/img/Vendor2Pic5.png"
+import Vendor2Pic6 from "../../../assets/img/Vendor2Pic6.png"
 import { Link } from "react-router-dom";
 import { IoIosStar } from "react-icons/io";
 import NavPic from "../../../assets/img/NavPic.jpg";
@@ -33,7 +36,7 @@ const Vendor2 = () => {
           </div>
 
           {/* Star Ratings */}
-          <div className="absolute bottom-20 right-10 bg-[#FBFAF2] p-2 rounded-md shadow-md w-32 text-center">
+          <div className="absolute top-48 right-28 bg-[#FBFAF2] p-2 rounded-md shadow-md w-32 text-center">
             <h3 className="font-bold">Star Rating</h3>
             <div className="flex justify-center space-x-1">
               {Array.from({ length: 5 }).map((_, index) => (
@@ -101,8 +104,8 @@ const Vendor2 = () => {
             <button className="text-white bg-[#FF9900] w-36 h-10 rounded-xl shadow-md hover:bg-[#e68a00] transition">
               View All Products
             </button>
-            <div className="flex gap-4 mt-5 flex-wrap">
-              {[AvailableProduct1, AvailableProduct2, AvailableProduct3].map((product, index) => (
+            <div className="grid grid-cols-3 gap-4 mt-5">
+              {[Vendor2Pic1,Vendor2Pic2, Vendor2Pic3, Vendor2Pic4,Vendor2Pic5,Vendor2Pic6].map((product, index) => (
                 <img
                   key={index}
                   className="w-32 h-32 rounded-lg shadow-md"
