@@ -101,9 +101,11 @@ const Vendor2 = () => {
 
           {/* Available Products */}
           <div>
+            <Link to="/vendorproducts">
             <button className="text-white bg-[#FF9900] w-36 h-10 rounded-xl shadow-md hover:bg-[#e68a00] transition">
               View All Products
             </button>
+            </Link>
             <div className="grid grid-cols-3 gap-4 mt-5">
               {[Vendor2Pic1,Vendor2Pic2, Vendor2Pic3, Vendor2Pic4,Vendor2Pic5,Vendor2Pic6].map((product, index) => (
                 <img

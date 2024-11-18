@@ -7,6 +7,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
+import ProductItem from "@/pages/cart/components/ProductItem";
 
 const ProductList = () => (
   <Card className="bg-white shadow-md border-l-4 border-primary-color">
