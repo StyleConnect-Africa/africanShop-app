@@ -57,8 +57,8 @@ const Vendor1 = () => {
             <button className="text-white bg-[#FF9900] w-36 h-10 rounded-xl shadow-md hover:bg-[#e68a00] transition">
               View All Products
             </button>
-            <div className="flex gap-4 mt-5 flex-wrap">
-              {[AvailableProduct1, AvailableProduct2, AvailableProduct3].map((product, index) => (
+            <div className="grid grid-cols-3 gap-4 mt-5">
+              {[AvailableProduct1, AvailableProduct2, AvailableProduct3, AvailableProduct1, AvailableProduct2, AvailableProduct3] .map((product, index) => (
                 <img
                   key={index}
                   className="w-32 h-32 rounded-lg shadow-md"
@@ -80,7 +80,7 @@ const Vendor1 = () => {
           />
 
           {/* Star Ratings */}
-          <div className="absolute bottom-20 right-10 bg-[#FBFAF2] p-2 rounded-md shadow-md w-32 text-center">
+          <div className="absolute bottom-96 right-14 bg-[#FBFAF2] p-2 rounded-md shadow-md w-32 text-center">
             <h3 className="font-bold">Star Rating</h3>
             <div className="flex justify-center space-x-1">
               {Array.from({ length: 5 }).map((_, index) => (
