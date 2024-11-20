@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import store from "./redux/strore";
+import { Provider } from "react-redux";
 import LandingPage from "./pages/landingPage/LandingPage";
 import ShopPage from "./pages/shopPage/ShopPage";
 import VendorPage from "./pages/vendorPage/VendorPage";
@@ -13,6 +14,7 @@ import Login from "./components/user/Login";
 import VendorLogin from "./components/vendor/VendorLogin";
 import Cart from "./pages/cart";
 import VendorProducts from "./pages/vendorProducts/VendorProducts";
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -69,7 +71,12 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+        <RouterProvider router={router} />
+    </Provider>
+  ); 
+    
 }
 
 export default App;

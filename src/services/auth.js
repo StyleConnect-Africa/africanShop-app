@@ -1,13 +1,12 @@
-import { apiClient } from "./config";
-export const apiVendorSignup = async (payload) => { //payload is an object containing all the details entered
-    // return await apiClient.post("/api/auth/register/", payload);
-    return await apiClient.post("/api/auth/register", payload);
-    // first parameter of POST = 'path', second parameter = 'payload'...
+import { apiClient } from "./Config";
+export const apiSignup = async (payload) => { //payload is an 
+    return await apiClient.post("/auth/register", payload);
+    
 }
-
 export const apiLogin = async (payload) => {
-    return apiClient.post("/api/auth/login", payload);
+    return apiClient.post("/auth/login", payload);
 }
+console.log(apiLogin);
 
 // export const apiProfile = async () => {
 //     return apiClient.post("/users/me");

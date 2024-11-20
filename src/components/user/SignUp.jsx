@@ -6,13 +6,15 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import VendorSignUpPic from "../../assets/img/VendorSignUpPic.png";
 import LoadingModal from "../ModalLoading";
-
+import { useSignUpUser } from "@/hooks/useAuth";
 const SignUp = () => {
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
   const showPasswordRef = useRef(false);
   const showConfirmPasswordRef = useRef(false);
   const [loading, setLoading] = useState(false);
+  const{mutate: signUp,isLoading}=useSignUpUser();
+
 
   const togglePasswordVisibility = () => {
     showPasswordRef.current = !showPasswordRef.current;
@@ -45,12 +47,11 @@ const SignUp = () => {
     }
 
     console.log("Form Data:", data);
-
-    // Simulate a network request
-    setTimeout(() => {
-      setLoading(false);
-      toast.success("Sign-up successful!");
-    }, 2000);
+   if(data.password !== data.confirmPassword)return toast.error("Passwords do not match!")
+    signUp(data,{
+      onSuccess:()=>toast.success("Sign-up successful!"),
+      onError:(error)=>toast.error(error.response.data.message || "Sign up Failed") 
+    })
   };
 
   return (
