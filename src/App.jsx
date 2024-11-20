@@ -13,6 +13,8 @@ import Login from "./components/user/Login";
 import VendorLogin from "./components/vendor/VendorLogin";
 import Cart from "./pages/cart";
 import VendorProducts from "./pages/vendorProducts/VendorProducts";
+import OrderConfirmation from "./pages/orderConfirmation/OrderConfirmation";
+import TrackOrder from "./pages/trackOrder/TrackOrder";
 function App() {
   const router = createBrowserRouter([
     {
@@ -66,6 +68,14 @@ function App() {
     {
       path: "/vendorproducts",
       element: <VendorProducts />,
+    },
+    {
+      path:"/orderconfirmation",
+      element:<OrderConfirmation />
+    },
+    {
+      path:"/trackorder",
+      element:<TrackOrder />
     },
   ]);
 
