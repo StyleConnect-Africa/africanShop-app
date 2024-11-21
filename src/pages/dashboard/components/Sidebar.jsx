@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BarChart2, ShoppingCart, Package, PlusCircle, Menu, X, Trash2, Edit } from "lucide-react";
+import ProfileSection from "./ProfileSection";
 
-const Sidebar = ({ activeTab, setActiveTab }) => {
+const Sidebar = ({ activeTab, setActiveTab, vendorName, onLogout }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -88,6 +89,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
             <Trash2 className="mr-2 h-4 w-4" /> Delete Product
           </Button>
         </nav>
+        <ProfileSection vendorName={vendorName} onLogout={onLogout} />
       </aside>
     </div>
   );
