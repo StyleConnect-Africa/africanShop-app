@@ -1,14 +1,16 @@
-import React,{useState, useEffect} from "react";
+import React from "react";
 import Slider from "react-slick";
-import ProductListingPic from "../../../assets/img/ProductListingPic.jpg";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FaCartPlus } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { apiGetProduct } from "../../../services/product";
+import { useProducts } from "@/hooks/useProduct";
 
 const ProductListing = () => {
-  const [products, setProducts] = useState([]);
+  const { data, isLoading, error } = useProducts();
+
+  console.log("Products data:", data);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -36,23 +38,18 @@ const ProductListing = () => {
       },
     ],
   };
-   useEffect(() => {
-     const fetchProducts = async () => {
-       try {
-         const response = await apiGetProduct();
-         console.log(response.data); // Log the data
-         setProducts(response.data); // Store the data in state if needed
-       } catch (error) {
-         console.error("Error fetching products:", error);
-       }
-     };
 
-     fetchProducts();
-   }, []);
+  if (isLoading) return <p>Loading products...</p>;
+  if (error) return <p>Error loading products: {error.message}</p>;
+
+  const products = data?.data || [];
+
   return (
     <div className="p-4">
       <div className="text-center mb-8">
-        <p className="text-4xl font-bold font-sans">Product Listing And Browsing</p>
+        <p className="text-4xl font-bold font-sans">
+          Product Listing And Browsing
+        </p>
         <p className="font-serif">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br />
           Perspiciatis, temporibus impedit! Iste nulla quam quisquam?
@@ -60,24 +57,30 @@ const ProductListing = () => {
       </div>
       <div className="mb-12">
         <Slider {...settings}>
-          {[...Array(4)].map((_, index) => (
-            <div key={index} className="p-4">
+          {products.map((product) => (
+            <div key={product.id} className="p-4">
               <div className="bg-[#F2FBFC] rounded-2xl shadow-xl">
                 <div className="mb-3">
                   <img
-                    src={ProductListingPic}
-                    alt=""
+                    src={`https://savefiles.org/${product.images[0]}?shareable_link=553`}
+                    alt={product.name}
                     className="rounded-2xl h-48 w-full object-cover"
                   />
                 </div>
                 <div className="p-4">
                   <div className="flex justify-between items-center mb-2">
-                    <MdFavoriteBorder className="text-2xl text-primary" />
-                    <FaCartPlus className="text-2xl text-primary" />
+                    <MdFavoriteBorder
+                      className="text-2xl text-primary cursor-pointer"
+                      onClick={() => addToFavorites(product)}
+                    />
+                    <FaCartPlus
+                      className="text-2xl text-primary cursor-pointer"
+                      onClick={() => addToCart(product)}
+                    />
                   </div>
                   <div className="flex justify-between items-center mb-2">
-                    <p className="font-normal text-xl">Ama Quophie</p>
-                    <span className="text-xl">$60.00</span>
+                    <p className="font-normal text-xl">{product.name}</p>
+                    <span className="text-xl">${product.price}</span>
                   </div>
                   <p className="text-sm">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -95,6 +98,16 @@ const ProductListing = () => {
       </div>
     </div>
   );
+};
+
+const addToCart = (product) => {
+  // Implement add to cart functionality
+  console.log("Added to cart:", product);
+};
+
+const addToFavorites = (product) => {
+  // Implement add to favorites functionality
+  console.log("Added to favorites:", product);
 };
 
 export default ProductListing;
