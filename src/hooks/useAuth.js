@@ -3,24 +3,24 @@ import { useNavigate } from "react-router-dom";
 import { apiSignup,apiLogin } from "@/services/auth";
 import { saveToken,saveUserData } from "@/utils/token";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 
 export const useLoginUser=()=>{
     const navigate= useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+
     return useMutation(apiLogin,{
         onMutate: () => {
-            // Notify the user that the login process has started
-            toast.info("Logging in...");
+            setIsLoading(true);
         },
         onSuccess:(response)=>{
-            // console.log('Login response:', response);
-
+            setIsLoading(false);
             const { data } = response || {};
             if(data && data.user){
               saveToken(data.token);
               saveUserData(data.user, data.token);
-              // Trim the route path to remove any extra spaces
-              const rolePath = data.user.role === "vendor" ? "/dashboard" : "/";
+              const rolePath = data.user.role === "vendor" ? "/dashboard" : "/shoppage";
               navigate(rolePath.trim());
               toast.success("Login successful!");
             }else{
@@ -29,6 +29,7 @@ export const useLoginUser=()=>{
             }
         },
         onError:(error)=>{
+            setIsLoading(false);
             toast.error(error.response?.data?.message || "An error occurred");
         }
     })
