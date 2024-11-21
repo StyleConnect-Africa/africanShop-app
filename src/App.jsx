@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import store from "./redux/strore";
+import { Provider } from "react-redux";
 import LandingPage from "./pages/landingPage/LandingPage";
 import ShopPage from "./pages/shopPage/ShopPage";
 import VendorPage from "./pages/vendorPage/VendorPage";
@@ -13,10 +14,14 @@ import Login from "./components/user/Login";
 import VendorLogin from "./components/vendor/VendorLogin";
 import Cart from "./pages/cart";
 import VendorProducts from "./pages/vendorProducts/VendorProducts";
+
 import OrderConfirmation from "./pages/orderConfirmation/OrderConfirmation";
 import TrackOrder from "./pages/trackOrder/TrackOrder";
+import { ToastContainer } from "react-toastify";
 function App() {
+
   const router = createBrowserRouter([
+    
     {
       path: "/",
       element: <LandingPage />,
@@ -79,7 +84,23 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </Provider>
+  ); 
+    
 }
 
 export default App;

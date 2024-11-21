@@ -1,15 +1,21 @@
 import axios from "axios";
 
-const baseURL = import.meta.env.VITE_BASE_URL;
-
-// taking token from the localStorage to be stored here...
-const token = localStorage.getItem("token") // accessing token from localStorage...
-
-if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-} // putting token in/on headers to be used for whatever...
+const BASE_URL = import.meta.env.VITE_API_URL;
+// console.log(import.meta.env);
+// console.log(BASE_URL);
 
 export const apiClient = axios.create({
-    baseURL: baseURL,
-   
-})
+  baseURL: BASE_URL,
+});
+
+apiClient.interceptors.request.use(
+  (config) => {
+    const token = window.localStorage.getItem("africanShopUserToken");
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);

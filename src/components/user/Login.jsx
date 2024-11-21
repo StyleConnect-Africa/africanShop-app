@@ -6,13 +6,13 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import VendorSignUpPic from "../../assets/img/VendorSignUpPic.png";
 import LoadingModal from "../ModalLoading";
-
+import { useLoginUser } from "@/hooks/useAuth";
 const Login = () => {
   const passwordRef = useRef(null);
   const showPasswordRef = useRef(false);
   const emailRef = useRef(null);
   const [loading, setLoading] = useState(false);
-
+const {mutate:login,isLoading}=useLoginUser();
   const togglePasswordVisibility = () => {
     showPasswordRef.current = !showPasswordRef.current;
     passwordRef.current.type = showPasswordRef.current ? "text" : "password";
@@ -24,15 +24,14 @@ const Login = () => {
 
     setLoading(true);
 
-    // Simulate a login process
-    setTimeout(() => {
-      setLoading(false);
-      if (email === "test@example.com" && password === "password") {
-        toast.success("Login successful!");
-      } else {
-        toast.error("Invalid email or password.");
+    
+    login(
+      { email, password },
+      {
+        onSuccess: () => toast.success("Login successful!"),
+        onError: (error) => toast.error(error.message || "Login failed!"),
       }
-    }, 2000);
+    );
   };
 
   return (

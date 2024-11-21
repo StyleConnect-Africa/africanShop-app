@@ -1,6 +1,6 @@
 import React from "react";
-import CheckoutPic1 from "../../../assets/img/CheckoutPic1.png";
-import CheckoutPic2 from "../../../assets/img/CheckoutPic2.png";
+import CheckoutPic1 from "../../../assets/img/Checkout Pic1.png";
+import CheckoutPic2 from "../../../assets/img/Checkout Pic2.png"
 import { Link } from "react-router-dom";
 
 const OrderConfirmation = () => {

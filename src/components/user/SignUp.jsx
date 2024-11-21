@@ -6,13 +6,15 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import VendorSignUpPic from "../../assets/img/VendorSignUpPic.png";
 import LoadingModal from "../ModalLoading";
-
+import { useSignUpUser } from "@/hooks/useAuth";
 const SignUp = () => {
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
   const showPasswordRef = useRef(false);
   const showConfirmPasswordRef = useRef(false);
   const [loading, setLoading] = useState(false);
+  const{mutate: signUp,isLoading}=useSignUpUser();
+
 
   const togglePasswordVisibility = () => {
     showPasswordRef.current = !showPasswordRef.current;
@@ -29,28 +31,28 @@ const SignUp = () => {
     setLoading(true);
 
     const formData = new FormData(event.target);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      password: formData.get("password"),
-      confirmPassword: formData.get("confirmPassword"),
-      role: "user",
-    };
+     const password = formData.get("password");
+     const confirmPassword = formData.get("confirmPassword");
 
-    if (data.password !== data.confirmPassword) {
-      setLoading(false);
-      toast.error("Passwords do not match!");
-      return;
-    }
+     if (password !== confirmPassword) {
+       toast.error("Passwords do not match");
+       setLoading(false);
+       return;
+     }
 
-    console.log("Form Data:", data);
-
-    // Simulate a network request
-    setTimeout(() => {
-      setLoading(false);
-      toast.success("Sign-up successful!");
-    }, 2000);
+     const data = {
+       name: formData.get("name"),
+       email: formData.get("email"),
+       phoneNo: formData.get("phone"),
+       password, // Only send the password field
+       role: "user",
+     };
+    
+    
+    signUp(data,{
+      onSuccess:()=>toast.success("Sign-up successful!"),
+      onError:(error)=>toast.error(error.response.data.message || "Sign up Failed") 
+    })
   };
 
   return (
