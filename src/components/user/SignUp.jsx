@@ -31,23 +31,24 @@ const SignUp = () => {
     setLoading(true);
 
     const formData = new FormData(event.target);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      password: formData.get("password"),
-      confirmPassword: formData.get("confirmPassword"),
-      role: "user",
-    };
+     const password = formData.get("password");
+     const confirmPassword = formData.get("confirmPassword");
 
-    if (data.password !== data.confirmPassword) {
-      setLoading(false);
-      toast.error("Passwords do not match!");
-      return;
-    }
+     if (password !== confirmPassword) {
+       toast.error("Passwords do not match");
+       setLoading(false);
+       return;
+     }
 
-    console.log("Form Data:", data);
-   if(data.password !== data.confirmPassword)return toast.error("Passwords do not match!")
+     const data = {
+       name: formData.get("name"),
+       email: formData.get("email"),
+       phoneNo: formData.get("phone"),
+       password, // Only send the password field
+       role: "user",
+     };
+    
+    
     signUp(data,{
       onSuccess:()=>toast.success("Sign-up successful!"),
       onError:(error)=>toast.error(error.response.data.message || "Sign up Failed") 

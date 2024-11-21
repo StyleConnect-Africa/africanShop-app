@@ -8,8 +8,12 @@ import { toast } from "react-toastify";
 export const useLoginUser=()=>{
     const navigate= useNavigate();
     return useMutation(apiLogin,{
+        onMutate: () => {
+            // Notify the user that the login process has started
+            toast.info("Logging in...");
+        },
         onSuccess:(response)=>{
-            console.log('Login response:', response);
+            // console.log('Login response:', response);
 
             const { data } = response || {};
             if(data && data.user){
@@ -18,6 +22,7 @@ export const useLoginUser=()=>{
               // Trim the route path to remove any extra spaces
               const rolePath = data.user.role === "vendor" ? "/dashboard" : "/";
               navigate(rolePath.trim());
+              toast.success("Login successful!");
             }else{
                 console.error("User data is undefined");
                 toast.error("User data is undefined");

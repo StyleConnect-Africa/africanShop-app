@@ -23,3 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 package-lock.json
+Checkout.jsx
+CheckoutHero.jsx
+CheckoutPic1.png
+CheckoutPic2.png
+MastercardLogo.png
+Paypallogo.jpg
+VisaLogo.png

@@ -2,18 +2,28 @@ import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import VendorSignUpPic from "../../assets/img/VendorSignUpPic.png";
 import CircularProgress from "./CircularProgress";
+import { toast } from "react-toastify";
 
 const SignUp1 = () => {
   const formDataRef = useRef({});
   const navigate = useNavigate();
 
   const handleNext = () => {
-    formDataRef.current.storeName = document.getElementById("storeName").value;
-    formDataRef.current.businessEmail =
-      document.getElementById("businessEmail").value;
-    formDataRef.current.businessPhoneNo =
-      document.getElementById("businessPhoneNo").value;
-    formDataRef.current.role = document.getElementById("role").value;
+    const storeName = document.getElementById("storeName").value.trim();
+    const businessEmail = document.getElementById("businessEmail").value.trim();
+    const businessPhoneNo = document.getElementById("businessPhoneNo").value.trim();
+
+    if (!storeName || !businessEmail || !businessPhoneNo) {
+      console.log("Validation failed: Missing fields");
+      toast.error("All fields are required");
+      return;
+    }
+
+    formDataRef.current.storeName = storeName;
+    formDataRef.current.businessEmail = businessEmail;
+    formDataRef.current.businessPhoneNo = businessPhoneNo;
+    formDataRef.current.role = "vendor";
+
     navigate("/signup2", { state: { formData: formDataRef.current } });
   };
 
@@ -42,7 +52,9 @@ const SignUp1 = () => {
           style={{ maxHeight: "90vh" }}
         >
           <div className="flex justify-between items-center mb-4">
-            <p className="text-[#B28400] text-xl font-medium font-sans">Vendor Sign Up</p>
+            <p className="text-[#B28400] text-xl font-medium font-sans">
+              Vendor Sign Up
+            </p>
             <CircularProgress currentStep={1} totalSteps={2} />
           </div>
           <form className="flex flex-col gap-y-5 mt-4 text-center">
@@ -51,18 +63,21 @@ const SignUp1 = () => {
               type="text"
               placeholder="Store Name"
               className="border rounded-lg h-14 w-full p-4"
+              required
             />
             <input
               id="businessEmail"
               type="email"
               placeholder="Business Email"
               className="border rounded-lg h-14 w-full p-4"
+              required
             />
             <input
               id="businessPhoneNo"
               type="text"
               placeholder="Business Phone No"
               className="border rounded-lg h-14 w-full p-4"
+              required
             />
             <input
               id="role"
