@@ -57,7 +57,7 @@ const SignUp2 = () => {
     signUp(userData, {
       onSuccess: () => {
         toast.success("Vendor registration successful!");
-        navigate("/dashbord");
+        navigate("/dashboard");
       },
       onError: (error) => {
         toast.error(error.response?.data?.message || "Vendor registration failed");
