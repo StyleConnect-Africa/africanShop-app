@@ -146,7 +146,7 @@ const Products = ({ loading }) => {
     {
       name: "Agbada Set",
       price: 120,
-      description: "Premium Nigerian formal wear",
+      description: "Premium Nigerian occassional wear",
       category: "Occassional",
       image: Agbada
     },
