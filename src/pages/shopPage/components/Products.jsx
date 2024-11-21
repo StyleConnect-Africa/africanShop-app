@@ -118,7 +118,7 @@ const Products = ({ loading }) => {
     {
       name: "Boubou",
       price: 50,
-      description: "Elegant West African traditional wear",
+      description: "Elegant West African wear",
       category: "Afro-Pop",
       image: Boubou
     },
