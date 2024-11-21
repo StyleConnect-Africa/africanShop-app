@@ -1,12 +1,14 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import Slider from "react-slick";
 import ProductListingPic from "../../../assets/img/ProductListingPic.jpg";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FaCartPlus } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { apiGetProduct } from "../../../services/product";
 
 const ProductListing = () => {
+  const [products, setProducts] = useState([]);
   const settings = {
     dots: true,
     infinite: true,
@@ -34,7 +36,19 @@ const ProductListing = () => {
       },
     ],
   };
+   useEffect(() => {
+     const fetchProducts = async () => {
+       try {
+         const response = await apiGetProduct();
+         console.log(response.data); // Log the data
+         setProducts(response.data); // Store the data in state if needed
+       } catch (error) {
+         console.error("Error fetching products:", error);
+       }
+     };
 
+     fetchProducts();
+   }, []);
   return (
     <div className="p-4">
       <div className="text-center mb-8">

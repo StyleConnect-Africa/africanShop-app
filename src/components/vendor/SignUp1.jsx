@@ -28,7 +28,7 @@ const SignUp1 = () => {
   };
 
   const handleLogin = () => {
-    navigate("/vendorlogin");
+    navigate("/login");
   };
 
   return (

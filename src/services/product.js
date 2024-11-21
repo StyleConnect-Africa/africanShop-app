@@ -1,13 +1,13 @@
 import { apiClient } from "./config";
 
 export const apiGetProduct = async () => {
-    return await apiClient.get('/api/product');
+    return await apiClient.get("/product/list");
 }
 export const apiAddProduct = async (payload) =>
-    apiClient.post("/product/", payload);
+  apiClient.post("/product/create", payload);
 
 export const apiGetOneProduct = async (id) =>
-    apiClient.get(`/api/product/${id}`);
+    apiClient.get(`/product/${id}`);
 
 export const apiEditProduct = async (id, payload) => {
     return await apiClient.put(`/api/product/${id}`, payload);

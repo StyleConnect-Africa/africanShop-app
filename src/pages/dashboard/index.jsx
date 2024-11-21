@@ -8,6 +8,7 @@ import ProductList from "./components/ProductList";
 import AddItemForm from "./components/AddItemForm";
 import UpdateItemForm from "./components/UpdateItemForm";
 import DeleteItem from "./components/DeleteItem";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -32,7 +33,7 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     // Logic to handle logout
-    console.log("Logged out");
+    toast.success("Logged out");
     navigate("/login"); // Redirect to login page
   };
 
