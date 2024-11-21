@@ -70,6 +70,7 @@ const ProductListing = () => {
   if (error) return <p>Error loading products: {error.message}</p>;
 
   const products = data?.data || [];
+  console.log(products);
 
   return (
     <div className="p-4">
@@ -99,25 +100,31 @@ const ProductListing = () => {
                     alt={product.name}
                     className="rounded-2xl h-48 w-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black opacity-70 rounded-2xl"></div>
+                  <div className="absolute inset-0 bg-black opacity-70 rounded-2xl z-0"></div>
                 </div>
                 <div className="p-4">
                   <div className="flex justify-between items-center mb-2">
-                    <p className="font-normal text-xl">{product.name}</p>
-                    <span className="text-xl">${product.price}</span>
+                    <p className="font-bold text-md">{product.name}</p>
+                    <span className="text-xl font-bold">
+                      GH₵{product.price}
+                    </span>
                   </div>
                   <p className="text-sm">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   </p>
                   <div className="flex justify-between items-center mt-4">
-                    <MdFavoriteBorder
-                      className="text-2xl text-primary cursor-pointer"
+                    <button
+                      className="flex items-center bg-accent1 text-white p-2 rounded-full shadow hover:bg-secondary"
                       onClick={() => addToFavorites(product)}
-                    />
-                    <FaCartPlus
-                      className="text-2xl text-primary cursor-pointer"
+                    >
+                      <MdFavoriteBorder className="text-xl" />
+                    </button>
+                    <button
+                      className="flex items-center bg-secondary text-white p-2 rounded-full shadow hover:bg-accent1"
                       onClick={() => addToCart(product)}
-                    />
+                    >
+                      <FaCartPlus className="text-xl" />
+                    </button>
                   </div>
                 </div>
               </div>
