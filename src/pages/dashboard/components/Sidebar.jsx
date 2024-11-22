@@ -37,7 +37,7 @@ const Sidebar = ({ activeTab, setActiveTab, vendorName, onLogout }) => {
       >
         {/* Sidebar header with close button */}
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold">Admin Dashboard</h2>
+          <p className="text-xl font-bold">Vendor's Dashboard</p>
           <Button
             className="md:hidden p-2"
             onClick={toggleSidebar}

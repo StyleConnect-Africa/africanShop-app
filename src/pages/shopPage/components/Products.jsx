@@ -11,7 +11,7 @@ const Products = () => {
   const [selectedSubCategory, setSelectedSubCategory] = useState("Subcategory");
   const [dropdowns, setDropdowns] = useState({ category: false, subCategory: false });
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 15;
+  const productsPerPage = 16;
 
   const dropdownRefs = {
     category: useRef(null),
@@ -151,7 +151,7 @@ const Products = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-12">
         {currentProducts.map((product) => (
-          <div key={product.id} className="p-4 bg-[#F2FBFC] rounded-2xl shadow-xl relative">
+          <div key={product.id} className="p-4 bg-[#F2FBFC] rounded-xl shadow-xl relative">
             <div className="absolute top-6 left-8 flex items-center z-10">
               <FaTag className="text-primary mr-1" />
               <span className="text-sm text-white">{product.category}</span>
@@ -166,7 +166,7 @@ const Products = () => {
             </div>
             <div className="p-4">
               <div className="flex justify-between items-center mb-2">
-                <p className="font-xl text-accent1 text-md">{product.name}</p>
+                <p className="text-sm font-bold capitalize text-accent1 text-md">{product.name}</p>
                 <span className="text-md font-bold text-accent1">
                   GH₵{product.price}
                 </span>
