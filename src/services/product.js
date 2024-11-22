@@ -1,5 +1,5 @@
-import { apiClient } from "./config";
 
+import { apiClient } from "./Config";
 export const apiGetProduct = async () => {
     return await apiClient.get("/product/list");
 }

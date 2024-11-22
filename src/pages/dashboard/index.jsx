@@ -12,9 +12,9 @@ import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
-  const [totalItems, setTotalItems] = useState(150);
-  const [totalStock, setTotalStock] = useState(1500);
-  const vendorName = "Emmy"; // Replace with actual vendor name
+  const [totalItems, setTotalItems] = useState(5);
+  const [totalStock, setTotalStock] = useState(100);
+  const vendorName = "Enoch"; // Replace with actual vendor name
   const navigate = useNavigate();
 
   const handleAddItem = (formData) => {
