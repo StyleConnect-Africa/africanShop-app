@@ -6,6 +6,7 @@ import { FaTag } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useProducts } from "@/hooks/useProduct";
+import { Link } from "react-router-dom";
 
 const ProductListing = () => {
   const { data, isLoading, error } = useProducts();
@@ -98,19 +99,19 @@ const ProductListing = () => {
                   <img
                     src={`https://savefiles.org/${product.images[0]}?shareable_link=553`}
                     alt={product.name}
-                    className="rounded-2xl h-48 w-full object-cover"
+                    className="rounded-2xl h-72 w-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black opacity-70 rounded-2xl z-0"></div>
+                  <div className="absolute inset-0 bg-black opacity-50 rounded-2xl z-0"></div>
                 </div>
                 <div className="p-4">
                   <div className="flex justify-between items-center mb-2">
-                    <p className="font-bold text-md">{product.name}</p>
-                    <span className="text-xl font-bold">
+                    <p className="font-xl  text-accent1 text-md">{product.name}</p>
+                    <span className="text-md font-bold text-accent1">
                       GH₵{product.price}
                     </span>
                   </div>
                   <p className="text-sm">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                   {product.description}
                   </p>
                   <div className="flex justify-between items-center mt-4">
                     <button
@@ -133,9 +134,11 @@ const ProductListing = () => {
         </Slider>
       </div>
       <div className="text-center mt-8">
+        <Link to="/shoppage">
         <button className="bg-primary text-white px-6 py-3 rounded-full shadow hover:bg-accent2">
           View All Products
         </button>
+        </Link>
       </div>
     </div>
   );
