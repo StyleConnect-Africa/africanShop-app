@@ -23,7 +23,7 @@ export const useProducts = () => {
   const subcategories = Array.isArray(data?.data) 
     ? [...new Set(data.data.map(item => item.subcategory))] 
     : [];
-
+console.log(data)
   // console.log('Fetched Categories:', categories); // Debugging log
   // console.log('Fetched Subcategories:', subcategories); // Debugging log
 

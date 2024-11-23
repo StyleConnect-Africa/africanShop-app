@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,8 +12,17 @@ const AddItemForm = () => {
   const formRef = useRef(null);
   const [imagePreviews, setImagePreviews] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [vendor, setVendor] = useState(null); // State to hold vendor information
   const addProductMutation = useAddProduct(); // Use the add product hook
   const { categories, subcategories } = useProducts(); // Get data, categories, and subcategories
+
+  // Retrieve vendor information from local storage
+  useEffect(() => {
+    const vendorData = JSON.parse(localStorage.getItem('vendor')); // Adjust the key based on how you store it
+    if (vendorData) {
+      setVendor(vendorData);
+    }
+  }, []);
 
   // Debugging logs
   console.log('Selected Category:', selectedCategory);
@@ -46,7 +55,18 @@ const AddItemForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Gather form data
     const formData = new FormData(formRef.current);
+    
+    // Add vendor information to formData
+    if (vendor) {
+      formData.append('vendorId', vendor.id);
+      formData.append('vendorName', vendor.name);
+      formData.append('vendorEmail', vendor.email);
+      formData.append('vendorStoreName', vendor.storeName);
+    }
+
     addProductMutation.mutate(formData); // Call the mutation to add the product
   };
 
@@ -144,20 +164,6 @@ const AddItemForm = () => {
               </option>
             ))}
           </Select>
-        </div>
-        <div className="col-span-1">
-          <Label
-            htmlFor="storeName"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Store Name
-          </Label>
-          <Input
-            id="storeName"
-            name="storeName"
-            required
-            className="mt-1 block w-full"
-          />
         </div>
         <div className="col-span-1">
           <Label
