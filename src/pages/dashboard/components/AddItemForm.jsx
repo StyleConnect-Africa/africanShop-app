@@ -1,40 +1,51 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Upload } from "lucide-react"; // Assuming you're using lucide-react for icons
+import { Upload } from "lucide-react"; 
+import { useAddProduct, useProducts } from "@/hooks/useProduct";
+import AddItemModal from "@/components/modal/AddItemModal";
 
-const AddItemForm = ({
-  handleAddItem,
-  categories = [],
-  subcategories = [],
-}) => {
+const AddItemForm = () => {
   const formRef = useRef(null);
-  const [imagePreviews, setImagePreviews] = React.useState([]);
+  const [imageFiles, setImageFiles] = useState([]); // Store the actual files
+  const [imagePreviews, setImagePreviews] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [vendor, setVendor] = useState(null); // State to hold vendor information
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+  const addProductMutation = useAddProduct(); // Use the add product hook
+  const { categories, subcategories } = useProducts(); // Get data, categories, and subcategories
 
-  const defaultCategories = [
-    { id: "1", name: "Electronics" },
-    { id: "2", name: "Clothing" },
-    { id: "3", name: "Home Appliances" },
-  ];
+  // Retrieve vendor information from local storage
+  useEffect(() => {
+    const vendorData = JSON.parse(localStorage.getItem('vendor')); // Adjust the key based on how you store it
+    if (vendorData) {
+      setVendor(vendorData);
+    }
+  }, []);
 
-  const defaultSubcategories = [
-    { id: "1", name: "Mobile Phones" },
-    { id: "2", name: "Laptops" },
-    { id: "3", name: "Televisions" },
-  ];
+  // Create a mapping of subcategories to categories
+  const subcategoryMapping = {
+    'Crafts & Gifts': ['Cultural Souvenirs', 'Handmade Crafts'],
+    'Fabric & Materials': ['Ankara Prints', 'Kente Cloth'],
+    'Clothing': ['Women’s Wear', 'Men’s Wear', 'Kids’ Wear'],
+    'Accessories': ['Jewelry', 'Bags & Purses', 'Footwear', 'Headwear', 'Mud Cloth'],
+  };
 
-  const categoryOptions = categories.length ? categories : defaultCategories;
-  const subcategoryOptions = subcategories.length
-    ? subcategories
-    : defaultSubcategories;
+  // Filter subcategories based on the selected category
+  const filteredSubcategories = selectedCategory ? subcategoryMapping[selectedCategory] || [] : [];
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
 
   const onDrop = (acceptedFiles) => {
     const previews = acceptedFiles.map((file) => URL.createObjectURL(file));
     setImagePreviews(previews);
+    setImageFiles(acceptedFiles); // Store the actual files for submission
   };
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -44,8 +55,38 @@ const AddItemForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Gather form data
     const formData = new FormData(formRef.current);
-    handleAddItem(formData);
+    
+    // Add vendor information to formData
+    if (vendor) {
+      formData.append('vendorId', vendor.id);
+      formData.append('vendorName', vendor.name);
+      formData.append('vendorEmail', vendor.email);
+      formData.append('vendorStoreName', vendor.storeName);
+    }
+
+    // Append image files to formData
+    imageFiles.forEach((file) => {
+      formData.append('images', file); // Append each image file
+    });
+
+    addProductMutation.mutate(formData, {
+      onSuccess: () => {
+        // Show modal on success
+        setIsModalOpen(true);
+        // Clear form data
+        formRef.current.reset();
+        setImagePreviews([]);
+        setImageFiles([]);
+        setSelectedCategory('');
+      },
+    });
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -111,11 +152,13 @@ const AddItemForm = ({
             name="category"
             required
             className="mt-1 block w-full"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
           >
             <option value="">Select a category</option>
-            {categoryOptions.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
+            {categories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
               </option>
             ))}
           </Select>
@@ -134,26 +177,12 @@ const AddItemForm = ({
             className="mt-1 block w-full"
           >
             <option value="">Select a subcategory</option>
-            {subcategoryOptions.map((subcategory) => (
-              <option key={subcategory.id} value={subcategory.id}>
-                {subcategory.name}
+            {filteredSubcategories.map((subcategory, index) => (
+              <option key={index} value={subcategory}>
+                {subcategory}
               </option>
             ))}
           </Select>
-        </div>
-        <div className="col-span-1">
-          <Label
-            htmlFor="storeName"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Store Name
-          </Label>
-          <Input
-            id="storeName"
-            name="storeName"
-            required
-            className="mt-1 block w-full"
-          />
         </div>
         <div className="col-span-1">
           <Label
@@ -201,11 +230,19 @@ const AddItemForm = ({
           <Button
             type="submit"
             className="w-full bg-black text-white py-2 mt-4"
+            disabled={addProductMutation.isLoading} // Disable button while loading
           >
-            Add Item
+            {addProductMutation.isLoading ? "Adding..." : "Add Item"}
           </Button>
         </div>
       </form>
+
+      {/* Modal for success message */}
+      <AddItemModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        message="Item successfully added to your store!"
+      />
     </div>
   );
 };
