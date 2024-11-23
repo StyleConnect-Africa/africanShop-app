@@ -10,34 +10,39 @@ import { useAddProduct, useProducts } from "@/hooks/useProduct"; // Import the h
 
 const AddItemForm = () => {
   const formRef = useRef(null);
+  const [imageFiles, setImageFiles] = useState([]); // Store the actual files
   const [imagePreviews, setImagePreviews] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [vendor, setVendor] = useState(null); // State to hold vendor information
   const addProductMutation = useAddProduct(); // Use the add product hook
   const { categories, subcategories } = useProducts(); // Get data, categories, and subcategories
 
   // Retrieve vendor information from local storage
   useEffect(() => {
-    const vendorData = JSON.parse(localStorage.getItem('vendor')); // Adjust the key based on how you store it
+    const vendorData = JSON.parse(localStorage.getItem("vendor")); // Adjust the key based on how you store it
     if (vendorData) {
       setVendor(vendorData);
     }
   }, []);
 
-  // Debugging logs
-  console.log('Selected Category:', selectedCategory);
-  console.log('All Subcategories:', subcategories);
-
   // Create a mapping of subcategories to categories
   const subcategoryMapping = {
-    'Crafts & Gifts': ['Cultural Souvenirs', 'Handmade Crafts'],
-    'Fabric & Materials': ['Ankara Prints', 'Kente Cloth'],
-    'Clothing': ['Women’s Wear', 'Men’s Wear', 'Kids’ Wear'],
-    'Accessories': ['Jewelry', 'Bags & Purses', 'Footwear', 'Headwear', 'Mud Cloth'],
+    "Crafts & Gifts": ["Cultural Souvenirs", "Handmade Crafts"],
+    "Fabric & Materials": ["Ankara Prints", "Kente Cloth"],
+    Clothing: ["Women’s Wear", "Men’s Wear", "Kids’ Wear"],
+    Accessories: [
+      "Jewelry",
+      "Bags & Purses",
+      "Footwear",
+      "Headwear",
+      "Mud Cloth",
+    ],
   };
 
   // Filter subcategories based on the selected category
-  const filteredSubcategories = selectedCategory ? subcategoryMapping[selectedCategory] || [] : [];
+  const filteredSubcategories = selectedCategory
+    ? subcategoryMapping[selectedCategory] || []
+    : [];
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
@@ -46,6 +51,7 @@ const AddItemForm = () => {
   const onDrop = (acceptedFiles) => {
     const previews = acceptedFiles.map((file) => URL.createObjectURL(file));
     setImagePreviews(previews);
+    setImageFiles(acceptedFiles); // Store the actual files for submission
   };
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -55,17 +61,22 @@ const AddItemForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Gather form data
     const formData = new FormData(formRef.current);
-    
+
     // Add vendor information to formData
     if (vendor) {
-      formData.append('vendorId', vendor.id);
-      formData.append('vendorName', vendor.name);
-      formData.append('vendorEmail', vendor.email);
-      formData.append('vendorStoreName', vendor.storeName);
+      formData.append("vendorId", vendor.id);
+      formData.append("vendorName", vendor.name);
+      formData.append("vendorEmail", vendor.email);
+      formData.append("vendorStoreName", vendor.storeName);
     }
+
+    // Append image files to formData
+    imageFiles.forEach((file) => {
+      formData.append("images", file); // Append each image file
+    });
 
     addProductMutation.mutate(formData); // Call the mutation to add the product
   };
