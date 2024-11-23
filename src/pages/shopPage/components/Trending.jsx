@@ -88,20 +88,18 @@ const Trending = () => {
                   alt={product.name}
                   className="w-full h-48 object-cover"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <p className="text-white text-lg font-semibold">
                     {product.subcategory}
                   </p>
                 </div>
               </div>
               <div className="p-4 flex-grow">
-                <h3 className="font-bold text-lg mb-2">{product.name}</h3>
-                <p className="text-gray-600 mb-4">{product.description}</p>
+                <h3 className="font-bold text-lg capitalize mb-2">{product.name}</h3>
+                <p className="text-accent1 tracking-tight mb-4">{product.description}</p>
                 <div className="flex items-center mt-4">
-                  <FaStore className="w-8 h-8 mr-2 text-gray-700" />
-                  <span className="text-gray-700">
-                    {product.vendor.storeName}
-                  </span>
+                  <FaStore className="w-8 h-8 mr-2 text-secondary text-accent1" />
+                  <span className="text-accent1 text-sm font-medium">{product.vendor.storeName}</span>
                 </div>
               </div>
             </div>
