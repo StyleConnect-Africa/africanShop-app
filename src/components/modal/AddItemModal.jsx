@@ -12,7 +12,7 @@ const AddItemModal = ({ isOpen, onClose, message }) => {
         <p className="mb-4">{message}</p>
         <button
           onClick={onClose}
-          className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
+          className="mt-4 bg-green-500 text-white py-2 px-4 rounded"
         >
           OK
         </button>
