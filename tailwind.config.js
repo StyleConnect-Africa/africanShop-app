@@ -16,8 +16,6 @@ export default {
   			btnBg: '#e68900',
   			accent1: '#1a202c',
   			accent2: '#2d3748',
-  			accent3: '#f7dc61',
-  			accent4: '#8bc34a',
   			background: 'hsl(var(--background))',
   			light: '#FBF5DF',
   			foreground: 'hsl(var(--foreground))',

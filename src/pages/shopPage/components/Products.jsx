@@ -11,7 +11,7 @@ const Products = () => {
   const [selectedSubCategory, setSelectedSubCategory] = useState("Subcategory");
   const [dropdowns, setDropdowns] = useState({ category: false, subCategory: false });
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 16;
+  const productsPerPage = 15;
 
   const dropdownRefs = {
     category: useRef(null),
@@ -149,7 +149,7 @@ const Products = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5 mb-12">
         {currentProducts.map((product) => (
           <div key={product.id} className="p-4 bg-[#F2FBFC] rounded-xl shadow-xl relative">
             <div className="absolute top-6 left-8 flex items-center z-10">
@@ -160,30 +160,30 @@ const Products = () => {
               <img
                 src={`https://savefiles.org/${product.images[0]}?shareable_link=553`}
                 alt={product.name}
-                className="rounded-2xl h-72 w-full object-cover"
+                className="rounded-xl h-72 w-full object-cover"
               />
               <div className="absolute inset-0 bg-black opacity-50 rounded-2xl z-0"></div>
             </div>
             <div className="p-4">
               <div className="flex justify-between items-center mb-2">
-                <p className="text-sm font-bold capitalize text-accent1 text-md">{product.name}</p>
-                <span className="text-md font-bold text-accent1">
+                <p className="text-md font-bold capitalize text-accent1 text-md">{product.name}</p>
+                <span className="text-lg font-medium text-gray-500">
                   GH₵{product.price}
                 </span>
               </div>
-              <p className="text-sm">{product.description}</p>
+              <p className="text-sm lg:text-lg font-sans">{product.description}</p>
               <div className="flex justify-between items-center mt-4">
                 <button
-                  className="flex items-center bg-accent1 text-white p-2 rounded-full shadow hover:bg-secondary"
+                  className="flex items-center bg-accent2 text-white p-2 rounded-md shadow hover:bg-secondary"
                   onClick={() => addToFavorites(product)}
                 >
-                  <MdFavoriteBorder className="text-xl" />
+                  <MdFavoriteBorder className="text-lg" />
                 </button>
                 <button
-                  className="flex items-center bg-secondary text-white p-2 rounded-full shadow hover:bg-accent1"
+                  className="flex items-center bg-secondary text-white p-2 rounded-md shadow hover:bg-accent1"
                   onClick={() => addToCart(product)}
                 >
-                  <FaCartPlus className="text-xl" />
+                  <FaCartPlus className="text-lg" />
                 </button>
               </div>
             </div>
