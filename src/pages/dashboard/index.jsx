@@ -27,17 +27,17 @@ const Dashboard = () => {
       <Sidebar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        vendorName={vendorName}
+      
         onLogout={handleLogout}
       />
       <main className="flex-1 p-4 md:p-8 overflow-y-auto">
         {activeTab === "overview" && (
-          <Overview totalItems={totalItems} totalStock={totalStock} />
+          <Overview  />
         )}
         {activeTab === "orders" && <OrderManagement />}
         {activeTab === "products" && <ProductList />}
         {activeTab === "addProduct" && (
-          <AddItemForm handleAddItem={handleAddItem} />
+          <AddItemForm />
         )}
       </main>
     </div>
