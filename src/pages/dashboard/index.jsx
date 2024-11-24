@@ -6,34 +6,19 @@ import Overview from "./components/Overview";
 import OrderManagement from "./components/OrderManagement";
 import ProductList from "./components/ProductList";
 import AddItemForm from "./components/AddItemForm";
-import UpdateItemForm from "./components/UpdateItemForm";
-import DeleteItem from "./components/DeleteItem";
 import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
-  const [totalItems, setTotalItems] = useState(5);
-  const [totalStock, setTotalStock] = useState(100);
-  const vendorName = "Enoch"; // Replace with actual vendor name
+  
   const navigate = useNavigate();
 
-  const handleAddItem = (formData) => {
-    const quantity = parseInt(formData.get("stock"), 10);
-    setTotalItems(totalItems + 1);
-    setTotalStock(totalStock + quantity);
-  };
+  
 
-  const handleUpdateItem = (formData) => {
-    // Logic to update item
-  };
-
-  const handleDeleteItem = () => {
-    // Logic to delete item
-  };
-
+  
   const handleLogout = () => {
     // Logic to handle logout
-    toast.success("Logged out");
+    // toast.success("Logged out");
     navigate("/login"); // Redirect to login page
   };
 
@@ -53,22 +38,6 @@ const Dashboard = () => {
         {activeTab === "products" && <ProductList />}
         {activeTab === "addProduct" && (
           <AddItemForm handleAddItem={handleAddItem} />
-        )}
-        {activeTab === "updateProduct" && (
-          <UpdateItemForm
-            handleUpdateItem={handleUpdateItem}
-            itemData={
-              {
-                /* pass item data here */
-              }
-            }
-          />
-        )}
-        {activeTab === "deleteProduct" && (
-          <DeleteItem
-            handleDeleteItem={handleDeleteItem}
-            itemName="Sample Item"
-          />
         )}
       </main>
     </div>

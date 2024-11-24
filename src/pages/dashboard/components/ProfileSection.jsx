@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "react-avatar-edit";
 import { toast } from "react-toastify";
 import Modal from "react-modal";
 import { FaEdit, FaSignOutAlt } from "react-icons/fa";
 
+// Assuming getUserData is a function that retrieves user data
+import { getUserData } from "@/utils/token";
+
 Modal.setAppElement('#root');
 
-const ProfileSection = ({ vendorName, onLogout }) => {
+const ProfileSection = ({ onLogout }) => {
   const [preview, setPreview] = useState(null);
   const [src, setSrc] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [firstName, setFirstName] = useState("");
+
+  useEffect(() => {
+    const user = getUserData();
+    const firstName = user?.name.split(" ")[0];
+    setFirstName(firstName || "User");
+  }, []);
 
   const onClose = () => {
     setPreview(null);
@@ -46,7 +56,7 @@ const ProfileSection = ({ vendorName, onLogout }) => {
           />
         ) : (
           <div className="w-24 h-24 rounded-full bg-gray-300 flex items-center justify-center">
-            <span className="text-2xl text-white">A</span>
+            <span className="text-2xl text-white">{firstName.charAt(0)}</span>
           </div>
         )}
         <button
@@ -56,7 +66,7 @@ const ProfileSection = ({ vendorName, onLogout }) => {
           <FaEdit />
         </button>
       </div>
-      <p className="mt-2 text-lg font-semibold">{vendorName}</p>
+      <p className="mt-2 text-lg font-semibold">{firstName}</p>
 
       <Modal
         isOpen={isModalOpen}
