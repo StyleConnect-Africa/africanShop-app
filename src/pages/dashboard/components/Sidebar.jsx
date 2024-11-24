@@ -74,20 +74,7 @@ const Sidebar = ({ activeTab, setActiveTab, vendorName, onLogout }) => {
           >
             <PlusCircle className="mr-2 h-4 w-4" /> Add Product
           </Button>
-          <Button
-            variant="ghost"
-            className="justify-start"
-            onClick={() => handleMenuItemClick("updateProduct")}
-          >
-            <Edit className="mr-2 h-4 w-4" /> Update Product
-          </Button>
-          <Button
-            variant="ghost"
-            className="justify-start"
-            onClick={() => handleMenuItemClick("deleteProduct")}
-          >
-            <Trash2 className="mr-2 h-4 w-4" /> Delete Product
-          </Button>
+         
         </nav>
         <ProfileSection vendorName={vendorName} onLogout={onLogout} />
       </aside>
