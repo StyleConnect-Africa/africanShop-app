@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import Avatar from "react-avatar-edit";
 import { toast } from "react-toastify";
 import Modal from "react-modal";
