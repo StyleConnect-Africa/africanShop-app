@@ -87,7 +87,7 @@ function App() {
     {
       path: "/dashboard",
       element: (
-        <ProtectedRoute isAuthenticated={true}>
+        <ProtectedRoute isAuthenticated={false}>
           <Dashboard />
         </ProtectedRoute>
       ),

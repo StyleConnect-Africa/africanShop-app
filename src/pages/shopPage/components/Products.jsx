@@ -72,13 +72,13 @@ const Products = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  if (isLoading) {
-    return <p>Loading products...</p>;
-  }
+  // if (isLoading) {
+  //   return <p>Loading products...</p>;
+  // }
 
-  if (error) {
-    return <p>Error loading products: {error.message}</p>;
-  }
+  // if (error) {
+  //   return <p>Error loading products: {error.message}</p>;
+  // }
 
   // Pagination logic
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -162,7 +162,7 @@ const Products = () => {
                 alt={product.name}
                 className="rounded-xl h-72 w-full object-cover"
               />
-              <div className="absolute inset-0 bg-black opacity-50 rounded-2xl z-0"></div>
+              <div className="absolute inset-0 bg-black opacity-40 rounded-2xl z-0"></div>
             </div>
             <div className="p-4">
               <div className="flex justify-between items-center mb-2">

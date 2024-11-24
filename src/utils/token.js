@@ -4,14 +4,15 @@ export const saveToken = (token) => {
 };
 
 // Function to retrieve the token from localStorage
+export const getToken = () => {
+  return localStorage.getItem("africanShopUserToken");
+};
 
-export const getToken=()=>{
-    return localStorage.getItem("africanShopUserToken")
-}
 // Function to remove the token from localStorage
-export const removeToken=()=>{
-    localStorage.removeItem("africanShop")
-}
+export const removeToken = () => {
+  localStorage.removeItem("africanShopUserToken");
+};
+
 // Function to save user data to localStorage
 export const saveUserData = (user) => {
   localStorage.setItem("USER", JSON.stringify(user));
